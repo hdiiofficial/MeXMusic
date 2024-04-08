@@ -460,7 +460,7 @@ async def maintenance_on():
 
 # Audio Video Limit
 from pytgcalls.types import AudioQuality, VideoQuality
-from pytgcalls.types import AudioParameters, VideoParameters
+#from pytgcalls.types import AudioParameters, VideoParameters
 
 
 async def save_audio_bitrate(chat_id: int, bitrate: str):
@@ -491,29 +491,29 @@ async def get_vid_bit_name(chat_id: int) -> str:
 async def get_audio_bitrate(chat_id: int) -> str:
     mode = audio.get(chat_id)
     if not mode:
-        return AudioParameters.from_quality(AudioQuality.STUDIO)
+        return AudioQuality.STUDIO
     if str(mode) == "Ultra":
-        return AudioParameters.from_quality(AudioQuality.STUDIO)
+        return AudioQuality.STUDIO
     if str(mode) == "High":
-        return AudioParameters.from_quality(AudioQuality.HIGH)
+        return AudioQuality.HIGH
     elif str(mode) == "Medium":
-        return AudioParameters.from_quality(AudioQuality.MEDIUM)
+        return AudioQuality.MEDIUM
     elif str(mode) == "Low":
-        return AudioParameters.from_quality(AudioQuality.LOW)
+        return AudioQuality.LOW
 
 
 async def get_video_bitrate(chat_id: int) -> str:
     mode = video.get(chat_id)
     if not mode:
         if PRIVATE_BOT_MODE == str(True):
-            return VideoParameters.from_quality(VideoQuality.HD_720p)
+            return VideoQuality.HD_720p
         else:
-            return VideoParameters.from_quality(VideoQuality.SD_360p)
+            return VideoParameters.from_quality(VideoQuality.SD_360p
     if str(mode) == "Ultra":
-        return VideoParameters.from_quality(VideoQuality.FHD_1080p)
+        return VideoQuality.FHD_1080p
     if str(mode) == "High":
-        return VideoParameters.from_quality(VideoQuality.HD_720p)
+        return VideoQuality.HD_720p
     elif str(mode) == "Medium":
-        return VideoParameters.from_quality(VideoQuality.SD_480p)
+        return VideoQuality.SD_480p
     elif str(mode) == "Low":
-        return VideoParameters.from_quality(VideoQuality.SD_360p)
+        return VideoQuality.SD_360p
